@@ -1,6 +1,6 @@
 spring:
   profiles:
-    active: test
+    active: local
   datasource:
     url: jdbc:h2:tcp://localhost/~/stock
     username: sa
@@ -9,7 +9,7 @@ spring:
 
   jpa:
     hibernate:
-      ddl-auto: create
+      ddl-auto: none
     properties:
       hibernate:
         #show_sql: true
