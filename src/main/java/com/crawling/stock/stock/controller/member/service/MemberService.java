@@ -4,6 +4,8 @@ import com.crawling.stock.stock.controller.member.dto.MemberRequestDto;
 import com.crawling.stock.stock.controller.member.dto.MemberResponseDto;
 import com.crawling.stock.stock.controller.member.repository.MemberRepository;
 import com.crawling.stock.stock.domain.entity.MemberEntity;
+import jakarta.persistence.EntityManager;
+import jakarta.persistence.PersistenceContext;
 import lombok.RequiredArgsConstructor;
 import org.springframework.stereotype.Service;
 import org.springframework.transaction.annotation.Transactional;
@@ -15,7 +17,6 @@ public class MemberService {
     private final MemberRepository memberRepository;
 
     // 회원 등록
-    @Transactional
     public MemberResponseDto registerMember(MemberRequestDto requestDto) {
 
         // entity mapping
