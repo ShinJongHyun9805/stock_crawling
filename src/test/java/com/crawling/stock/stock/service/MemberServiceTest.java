@@ -24,7 +24,6 @@ class MemberServiceTest {
 
     @Test
     @Transactional
-    @Commit
     void 등록_테스트() {
 
         // entity mapping
@@ -36,6 +35,8 @@ class MemberServiceTest {
 
         // 등록
         MemberEntity savedMember = memberRepository.save(member);
+
+        em.flush();
 
         Assertions.assertTrue(!ObjectUtils.isEmpty(savedMember));
     }
