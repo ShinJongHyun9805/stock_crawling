@@ -20,10 +20,18 @@ public class StockCrawlingController {
 
     private final StockCrawlingService stockCrawlingService;
 
-    @GetMapping("/stock/{stockCode}")
+    @GetMapping("/jsoup/stock/{stockCode}")
     public ResponseEntity<StockCrawlingResponseDto> getStockInfo(@PathVariable String stockCode) {
         return Optional.ofNullable(stockCrawlingService.getStockInfo(stockCode))
                 .map(ResponseEntity::ok)
                 .orElseGet(() -> ResponseEntity.status(HttpStatus.INTERNAL_SERVER_ERROR).build());
+    }
+
+    @GetMapping("/selenum/stock/{stockCode}")
+    public ResponseEntity<StockCrawlingResponseDto> getStockInfoBySelenium(@PathVariable String stockCode) throws Exception {
+        return Optional.ofNullable(stockCrawlingService.getStockInfoBySelenium(stockCode))
+                .map(ResponseEntity::ok)
+                .orElseGet(() -> ResponseEntity.status(HttpStatus.INTERNAL_SERVER_ERROR).build());
+
     }
 }
